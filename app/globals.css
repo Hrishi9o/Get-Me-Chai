@@ -1,0 +1,736 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0c0c0f;
+  --bg-secondary: #141418;
+  --bg-card: rgba(22, 22, 28, 0.75);
+  --bg-card-hover: rgba(30, 30, 40, 0.95);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.2);
+  --text-main: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --accent-coral: #ff424d;
+  --accent-orange: #ff6b4a;
+  --glow-color: rgba(255, 66, 77, 0.25);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Patreon Glassmorphism Containers */
+.patreon-glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.patreon-glass-subtle {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Patreon Signature Card Hover Effect */
+.patreon-card-hover {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.patreon-card-hover:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(255, 66, 77, 0.5);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.7), 0 0 30px -8px rgba(255, 66, 77, 0.35);
+}
+
+/* Patreon Organic Shape Cutouts */
+.patreon-organic-shape-1 {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: morphShape 8s ease-in-out infinite alternate;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.patreon-organic-shape-1:hover {
+  transform: scale(1.06) rotate(2deg);
+  box-shadow: 0 0 50px -10px rgba(255, 66, 77, 0.5);
+}
+
+.patreon-organic-shape-2 {
+  border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%;
+  animation: morphShapeAlt 9s ease-in-out infinite alternate;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.patreon-organic-shape-2:hover {
+  transform: scale(1.06) rotate(-2deg);
+  box-shadow: 0 0 50px -10px rgba(255, 107, 74, 0.5);
+}
+
+@keyframes morphShape {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+@keyframes morphShapeAlt {
+  0% {
+    border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%;
+  }
+  50% {
+    border-radius: 70% 30% 40% 60% / 60% 30% 70% 40%;
+  }
+  100% {
+    border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%;
+  }
+}
+
+.patreon-organic-shape-3 {
+  border-radius: 55% 45% 60% 40% / 40% 60% 40% 60%;
+  animation: morphShape 11s ease-in-out infinite alternate;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.patreon-organic-shape-3:hover {
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 0 0 50px -10px rgba(245, 158, 11, 0.5);
+}
+
+.patreon-organic-shape-4 {
+  border-radius: 40% 60% 45% 55% / 60% 35% 65% 40%;
+  animation: morphShapeAlt 12s ease-in-out infinite alternate;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.patreon-organic-shape-4:hover {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 0 50px -10px rgba(16, 185, 129, 0.5);
+}
+
+/* Interactive Background Pictures */
+.interactive-bg-picture {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.interactive-bg-picture:hover {
+  opacity: 0.95 !important;
+  transform: translateY(-8px) scale(1.04) !important;
+  filter: brightness(1.1) contrast(1.05) !important;
+  border-color: rgba(255, 66, 77, 0.5) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 40px -10px rgba(255, 66, 77, 0.4) !important;
+}
+
+.perspective-hero {
+  perspective: 1200px;
+}
+
+.perspective-800 {
+  perspective: 800px;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* 3D Interactive Tilt Card with Specular Sheen */
+.card-3d-interactive {
+  transform-style: preserve-3d;
+  transition: transform 0.16s cubic-bezier(0.2, 0.8, 0.35, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  will-change: transform;
+  position: relative;
+}
+
+.card-3d-interactive::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle 260px at var(--sheen-x, 50%) var(--sheen-y, 50%), rgba(255, 255, 255, 0.14), transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 25;
+}
+
+.card-3d-interactive:hover::after {
+  opacity: 1;
+}
+
+.card-3d-pop {
+  transform: translateZ(28px);
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-3d-pop-deep {
+  transform: translateZ(42px);
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 3D Magnetic Cursor Tilt Button with Specular Sheen */
+.btn-3d-interactive {
+  transform-style: preserve-3d;
+  transition: transform 0.14s cubic-bezier(0.2, 0.8, 0.4, 1), box-shadow 0.25s ease, background-color 0.2s ease;
+  will-change: transform;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-3d-interactive::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle 120px at var(--sheen-x, 50%) var(--sheen-y, 50%), rgba(255, 255, 255, 0.35), transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.btn-3d-interactive:hover::before {
+  opacity: 1;
+}
+
+/* 3D App Logo Gem Badge */
+.logo-3d-gem {
+  transform-style: preserve-3d;
+  perspective: 600px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.logo-3d-gem:hover {
+  box-shadow: 0 10px 25px -4px rgba(255, 66, 77, 0.4), 0 0 15px 2px rgba(245, 158, 11, 0.25);
+}
+
+/* Micro Steam Animation for Logo */
+@keyframes logoSteamRise {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-8px) scaleX(1.4);
+    opacity: 0;
+  }
+}
+
+.animate-logo-steam-1 {
+  animation: logoSteamRise 1.8s ease-out infinite;
+}
+
+.animate-logo-steam-2 {
+  animation: logoSteamRise 1.8s ease-out infinite 0.7s;
+}
+
+
+/* 3D Floating Chai Coin Animation */
+@keyframes coinSpin3D {
+  0% {
+    transform: rotateX(12deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(12deg) rotateY(360deg);
+  }
+}
+
+.animate-coin-spin-3d {
+  animation: coinSpin3D 7s linear infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+@keyframes coinFloatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+.animate-coin-float {
+  animation: coinFloatSlow 4s ease-in-out infinite;
+}
+
+.coin-face-front,
+.coin-face-back {
+  backface-visibility: hidden;
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.coin-face-front {
+  transform: translateZ(5px);
+  background: radial-gradient(circle at 35% 30%, #fef08a 0%, #f59e0b 55%, #b45309 100%);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.6), inset 0 0 8px rgba(0, 0, 0, 0.45);
+}
+
+.coin-face-back {
+  transform: rotateY(180deg) translateZ(5px);
+  background: radial-gradient(circle at 65% 30%, #fef08a 0%, #f59e0b 55%, #b45309 100%);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.6), inset 0 0 8px rgba(0, 0, 0, 0.45);
+}
+
+.coin-edge {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: #92400e;
+  transform: translateZ(0px);
+  box-shadow: 0 10px 24px -2px rgba(245, 158, 11, 0.45);
+}
+
+
+/* 3D Embossed Step Badges */
+.step-badge-3d {
+  transform-style: preserve-3d;
+  box-shadow: 0 6px 0 rgba(190, 18, 60, 0.5), 0 10px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-badge-3d:hover {
+  transform: translateY(-3px) translateZ(16px);
+  box-shadow: 0 10px 0 rgba(190, 18, 60, 0.7), 0 16px 28px rgba(244, 63, 94, 0.35);
+}
+
+/* 3D Ceramic Mug Assembly for Simulator */
+.simulator-3d-stage {
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.mug-3d-assembly {
+  transform-style: preserve-3d;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+
+/* Interactive Category / Creator Tag Hover Effect */
+.patreon-interactive-tag {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.patreon-interactive-tag:hover {
+  transform: translateY(-3px) scale(1.05);
+  border-color: rgba(255, 66, 77, 0.6);
+  box-shadow: 0 8px 24px -6px rgba(255, 66, 77, 0.35);
+}
+
+/* Floating animation */
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(1.5deg); }
+}
+
+/* Dynamic Ambient Glow Orbs Drifting */
+@keyframes orbDrift1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.22;
+  }
+  33% {
+    transform: translate(60px, -45px) scale(1.12);
+    opacity: 0.32;
+  }
+  66% {
+    transform: translate(-40px, 35px) scale(0.92);
+    opacity: 0.20;
+  }
+}
+
+@keyframes orbDrift2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.18;
+  }
+  33% {
+    transform: translate(-50px, 40px) scale(1.15);
+    opacity: 0.28;
+  }
+  66% {
+    transform: translate(45px, -30px) scale(0.9);
+    opacity: 0.16;
+  }
+}
+
+@keyframes orbDrift3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translate(30px, 50px) scale(1.1);
+    opacity: 0.25;
+  }
+}
+
+.animate-orb-drift-1 {
+  animation: orbDrift1 16s ease-in-out infinite alternate;
+}
+
+.animate-orb-drift-2 {
+  animation: orbDrift2 20s ease-in-out infinite alternate;
+}
+
+.animate-orb-drift-3 {
+  animation: orbDrift3 14s ease-in-out infinite alternate;
+}
+
+/* Subtle Tech Radial Dot Grid Background */
+.dynamic-bg-mesh {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Hero Cinematic Breathing (Ken Burns) */
+@keyframes heroKenBurns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.06) translate(-1%, -0.8%);
+  }
+  100% {
+    transform: scale(1.02) translate(0.8%, 0);
+  }
+}
+
+.animate-hero-kenburns {
+  animation: heroKenBurns 24s ease-in-out infinite alternate;
+}
+
+/* Floating Ember / Steam Particle */
+@keyframes floatParticle {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-20vh) translateX(30px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.floating-bg-particle {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: floatParticle linear infinite;
+}
+
+/* Animated Aurora Glow Wave */
+@keyframes auroraWave {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-aurora-wave {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.18), rgba(245, 158, 11, 0.14), rgba(217, 70, 239, 0.12), rgba(16, 185, 129, 0.08));
+  background-size: 300% 300%;
+  animation: auroraWave 14s ease infinite;
+}
+
+.patreon-float {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+.patreon-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+/* Silk-Smooth GPU Floating Animations for Cutouts */
+@keyframes patreonFloat1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -9px, 0) rotate(1deg);
+  }
+}
+
+@keyframes patreonFloat2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(5px, -12px, 0) rotate(-1.5deg);
+  }
+}
+
+@keyframes patreonFloat3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-5px, -11px, 0) rotate(1.2deg);
+  }
+}
+
+@keyframes patreonFloat4 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(4px, -8px, 0) rotate(-1deg);
+  }
+}
+
+.patreon-float-1 {
+  animation: patreonFloat1 6.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+.patreon-float-2 {
+  animation: patreonFloat2 7.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite 0.5s;
+  will-change: transform;
+}
+
+.patreon-float-3 {
+  animation: patreonFloat3 8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite 1s;
+  will-change: transform;
+}
+
+.patreon-float-4 {
+  animation: patreonFloat4 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite 1.5s;
+  will-change: transform;
+}
+
+/* Chai Steam Rise & Sway Animation */
+@keyframes steamRiseSway {
+  0% {
+    transform: translateY(0) scaleX(1) translateX(0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.9;
+    transform: translateY(-12px) scaleX(1.3) translateX(2px);
+  }
+  60% {
+    transform: translateY(-24px) scaleX(1.6) translateX(-3px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-42px) scaleX(2.2) translateX(4px);
+    opacity: 0;
+  }
+}
+
+.patreon-steam-particle {
+  animation: steamRiseSway 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Chai Liquid Surface Pulse Animation */
+@keyframes surfacePulse {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.03);
+  }
+}
+
+.chai-surface-wave {
+  animation: surfacePulse 2.5s ease-in-out infinite alternate;
+}
+
+/* Shimmer Light Border Animation */
+@keyframes borderGlowSweep {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.patreon-animated-border {
+  background: linear-gradient(60deg, #ff424d, #ff6b4a, #f59e0b, #ff424d);
+  background-size: 300% 300%;
+  animation: borderGlowSweep 6s ease infinite;
+}
+
+/* Continuous Feature Marquee */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-features {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 24s linear infinite;
+}
+
+.animate-marquee-features:hover {
+  animation-play-state: paused;
+}
+
+/* Liquid Chai Surface Wave Effect (No sideways shift, perfectly contained) */
+@keyframes liquidWave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.animate-liquid-wave {
+  animation: liquidWave 3s ease-in-out infinite alternate;
+}
+
+/* Cup Bounce Animation */
+@keyframes cupBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  35% { transform: translateY(-10px) scale(1.14); }
+  65% { transform: translateY(-2px) scale(1.04); }
+}
+
+.animate-cup-bounce {
+  animation: cupBounce 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Glow Pulse Animation */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px -3px rgba(255, 66, 77, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px 4px rgba(255, 66, 77, 0.65);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* Ripple Animation */
+@keyframes rippleExpand {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  animation: rippleExpand 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+/* Fade In Animation */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeInSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Gradient Text Shimmer */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-text {
+  background: linear-gradient(90deg, #ff424d, #ff8a65, #fbbf24, #ff424d);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-coral);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
