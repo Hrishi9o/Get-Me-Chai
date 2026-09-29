@@ -428,10 +428,10 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-rose-950/40 via-transparent to-transparent opacity-60" />
                 </div>
-                {/* Badge outside overflow-hidden so NEVER clipped */}
+                {/* Badge outside overflow-hidden so NEVER clipped and positioned to avoid satellite overlap */}
                 <div
                   style={{ transform: 'translateZ(38px)' }}
-                  className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-black/90 backdrop-blur-xl border border-white/30 text-xs font-bold text-white shadow-2xl whitespace-nowrap z-40 transition-all duration-300 group-hover/center:scale-105 group-hover/center:border-rose-400 pointer-events-none"
+                  className="absolute -bottom-3 left-4 sm:left-10 px-3.5 py-1.5 rounded-full bg-black/90 backdrop-blur-xl border border-white/30 text-[11px] sm:text-xs font-bold text-white shadow-2xl whitespace-nowrap z-40 transition-all duration-300 group-hover/center:scale-105 group-hover/center:border-rose-400 pointer-events-none"
                 >
                   🎨 Visual Artist • Direct Chai
                 </div>
@@ -492,7 +492,7 @@ export default function Home() {
                 style={{
                   transform: `translate3d(calc(var(--norm-x, 0) * 28px), calc(var(--norm-y, 0) * 28px), 40px) rotateY(calc(var(--norm-x, 0) * 14deg)) rotateX(calc(var(--norm-y, 0) * -14deg))`,
                 }}
-                className="hidden sm:block absolute -bottom-8 -right-12 sm:-bottom-10 sm:-right-16 md:-bottom-10 md:-right-20 patreon-float-2 cursor-pointer will-change-transform z-30 group/chai preserve-3d"
+                className="hidden sm:block absolute -bottom-10 -right-14 sm:-bottom-12 sm:-right-22 md:-bottom-12 md:-right-26 patreon-float-2 cursor-pointer will-change-transform z-30 group/chai preserve-3d"
               >
                 {/* Masked Organic Image */}
                 <div className="patreon-organic-shape-2 w-28 h-28 sm:w-34 sm:h-34 md:w-36 md:h-36 overflow-hidden border-2 border-white/50 shadow-2xl relative">
