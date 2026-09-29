@@ -357,59 +357,59 @@ export default function Home() {
       {/* Content wrapper */}
       <div className="relative z-10">
 
-        {/* 1. Patreon Signature Hero Showcase with Silk GPU 3D Parallax */}
-        <section className="perspective-hero relative w-full min-h-[82vh] lg:min-h-[88vh] flex flex-col justify-between overflow-hidden bg-neutral-950/80 border-b border-white/[0.08] preserve-3d">
+        {/* 1. Modern Creator Showcase Hero with Silk GPU 3D Parallax */}
+        <section className="perspective-hero relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-between overflow-hidden bg-neutral-950/95 border-b border-white/[0.08] preserve-3d">
 
-          {/* Full-bleed Immersive Creator Visual Background with Subtle Parallax */}
+          {/* Dark Atmospheric Ambient Creator Background (Replaced cinema clapperboard) */}
           <div
             className="absolute inset-0 z-0 overflow-hidden will-change-transform"
             style={{
-              transform: `scale(1.06) translate3d(calc(var(--norm-x, 0) * -10px), calc(var(--norm-y, 0) * -8px), 0)`
+              transform: `scale(1.04) translate3d(calc(var(--norm-x, 0) * -8px), calc(var(--norm-y, 0) * -6px), 0)`
             }}
           >
             <img
-              src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=2000&q=80"
-              alt="Creator Scene"
-              className="w-full h-full object-cover object-center opacity-70 filter brightness-[0.75] contrast-[1.08] animate-hero-kenburns"
+              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=2000&q=80"
+              alt="Creative Space"
+              className="w-full h-full object-cover object-center opacity-20 filter brightness-[0.55] contrast-[1.15]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0f] via-black/20 to-black/50" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0f] via-[#0c0c0f]/85 to-[#0c0c0f]/90" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/12 via-rose-500/8 to-transparent" />
           </div>
 
           {/* Dynamic GPU Hero Glow */}
           <div
-            className="absolute pointer-events-none z-0 rounded-full blur-[110px] opacity-40 will-change-transform"
+            className="absolute pointer-events-none z-0 rounded-full blur-[120px] opacity-35 will-change-transform"
             style={{
-              width: '420px',
-              height: '420px',
-              background: 'radial-gradient(circle, rgba(255, 66, 77, 0.35) 0%, rgba(245, 158, 11, 0.12) 50%, transparent 70%)',
-              transform: `translate3d(calc(var(--mouse-x, -500px) - 210px), calc(var(--mouse-y, -500px) - 210px), 0)`
+              width: '450px',
+              height: '450px',
+              background: 'radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(244, 63, 94, 0.15) 50%, transparent 70%)',
+              transform: `translate3d(calc(var(--mouse-x, -500px) - 225px), calc(var(--mouse-y, -500px) - 225px), 0)`
             }}
           />
 
-          {/* Hero Top Content Area: Dramatic Oversized Typography */}
-          <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
-            <div className="flex items-start justify-between">
-              {/* Massive Left Word (Patreon's "Speak") with Silky GPU Offset */}
-              <h1
-                style={{
-                  transform: `translate3d(calc(var(--norm-x, 0) * -14px), calc(var(--norm-y, 0) * -8px), 0)`
-                }}
-                className="text-6xl sm:text-8xl md:text-9xl lg:text-[11rem] font-light tracking-tight text-white leading-none drop-shadow-2xl select-none will-change-transform"
-              >
-                Speak
-              </h1>
-
-              {/* Top Pill / Badge with Pulse */}
-              <div className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 backdrop-blur-xl border border-white/15 text-xs font-semibold text-neutral-200 shadow-xl patreon-float cursor-default">
-                <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
-                <span>Direct Support for Modern Creators</span>
-              </div>
+          {/* Hero Top Content Area: Platform Headline & Trust Badges */}
+          <div className="relative z-10 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 text-center space-y-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.06] backdrop-blur-xl border border-white/10 text-xs font-semibold text-neutral-200 shadow-xl patreon-float cursor-default">
+              <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+              <span>Direct Support for Modern Creators</span>
+              <span className="text-white/20">•</span>
+              <span className="text-amber-300 font-bold">0% Platform Fee</span>
             </div>
+
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.12]">
+              Fund Your Passion, <br className="hidden sm:inline" />
+              <span className="bg-gradient-to-r from-amber-300 via-rose-400 to-orange-400 bg-clip-text text-transparent">
+                One Chai At A Time.
+              </span>
+            </h1>
+
+            <p className="text-sm sm:text-base md:text-lg text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+              Connect directly with your audience. Receive 100% direct payouts straight to your bank account with zero platform commission.
+            </p>
           </div>
 
           {/* Center Floating Organic Cutout Array with Silky GPU 3D Float */}
-          <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 my-auto flex items-center justify-center py-8 sm:py-14">
+          <div className="relative z-10 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 my-auto flex items-center justify-center py-8 sm:py-14">
             <div className="relative group preserve-3d">
 
               {/* Primary Centerpiece: Digital Visual Artist Cutout */}
@@ -420,7 +420,7 @@ export default function Home() {
                 className="patreon-float-1 relative cursor-pointer will-change-transform z-20 group/center preserve-3d"
               >
                 {/* Masked Organic Image */}
-                <div className="patreon-organic-shape-1 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 overflow-hidden border-2 border-white/60 shadow-2xl backdrop-blur-md relative">
+                <div className="patreon-organic-shape-1 w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 overflow-hidden border-2 border-white/60 shadow-2xl backdrop-blur-md relative">
                   <img
                     src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
                     alt="Creator Spotlight"
@@ -431,7 +431,7 @@ export default function Home() {
                 {/* Badge outside overflow-hidden so NEVER clipped */}
                 <div
                   style={{ transform: 'translateZ(38px)' }}
-                  className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-black/90 backdrop-blur-xl border border-white/30 text-[10px] sm:text-xs font-bold text-white shadow-2xl whitespace-nowrap z-40 transition-all duration-300 group-hover/center:scale-105 group-hover/center:border-rose-400 pointer-events-none"
+                  className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-black/90 backdrop-blur-xl border border-white/30 text-xs font-bold text-white shadow-2xl whitespace-nowrap z-40 transition-all duration-300 group-hover/center:scale-105 group-hover/center:border-rose-400 pointer-events-none"
                 >
                   🎨 Visual Artist • Direct Chai
                 </div>
@@ -456,7 +456,7 @@ export default function Home() {
                 {/* Badge outside overflow-hidden */}
                 <div
                   style={{ transform: 'translateZ(32px)' }}
-                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-black/90 backdrop-blur-xl border border-rose-400/50 text-[9px] sm:text-[10px] font-bold text-rose-300 shadow-2xl whitespace-nowrap z-40 transition-all duration-300 group-hover/indie:scale-105 pointer-events-none"
+                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/90 backdrop-blur-xl border border-rose-400/50 text-[10px] font-bold text-rose-300 shadow-2xl whitespace-nowrap z-40 transition-all duration-300 group-hover/indie:scale-105 pointer-events-none"
                 >
                   💻 Indie Builder
                 </div>
@@ -481,7 +481,7 @@ export default function Home() {
                 {/* Badge outside overflow-hidden */}
                 <div
                   style={{ transform: 'translateZ(32px)' }}
-                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-black/90 backdrop-blur-xl border border-emerald-400/50 text-[9px] sm:text-[10px] font-bold text-emerald-300 shadow-2xl whitespace-nowrap z-40 transition-all duration-300 group-hover/audio:scale-105 pointer-events-none"
+                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/90 backdrop-blur-xl border border-emerald-400/50 text-[10px] font-bold text-emerald-300 shadow-2xl whitespace-nowrap z-40 transition-all duration-300 group-hover/audio:scale-105 pointer-events-none"
                 >
                   🎙️ Audio Creator
                 </div>
@@ -506,7 +506,7 @@ export default function Home() {
                 {/* Badge outside overflow-hidden */}
                 <div
                   style={{ transform: 'translateZ(32px)' }}
-                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-black/90 backdrop-blur-xl border border-amber-400/50 text-[9px] sm:text-[10px] font-bold text-amber-300 shadow-2xl whitespace-nowrap z-40 transition-all duration-300 group-hover/chai:scale-105 pointer-events-none"
+                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/90 backdrop-blur-xl border border-amber-400/50 text-[10px] font-bold text-amber-300 shadow-2xl whitespace-nowrap z-40 transition-all duration-300 group-hover/chai:scale-105 pointer-events-none"
                 >
                   ☕ Chai Ritual
                 </div>
@@ -515,15 +515,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hero Bottom Bar: Huge "volumes" + Creator Card + Down Arrow with Silk Parallax */}
+          {/* Hero Bottom Bar: CTAs + Live Highlights + Down Arrow */}
           <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
-            <div className="flex flex-col md:flex-row items-end justify-between gap-6">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
 
               {/* Down Arrow Indicator */}
               <div className="flex items-center gap-3">
                 <a
                   href="#content"
-                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-xl transition-all hover:scale-110 active:scale-95 shadow-lg group cursor-pointer"
+                  className="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-base transition-all hover:scale-110 active:scale-95 shadow-lg group cursor-pointer"
                   aria-label="Scroll Down"
                 >
                   <span className="transition-transform duration-300 group-hover:translate-y-1">↓</span>
@@ -533,16 +533,25 @@ export default function Home() {
                 </span>
               </div>
 
-              {/* Massive Right Word (Patreon's "volumes") with Silk Parallax */}
-              <div className="text-right">
-                <h2
-                  style={{
-                    transform: `translate3d(calc(var(--norm-x, 0) * 14px), calc(var(--norm-y, 0) * 8px), 0)`
-                  }}
-                  className="text-6xl sm:text-8xl md:text-9xl lg:text-[11rem] font-light tracking-tight text-white leading-none drop-shadow-2xl select-none -mb-2 will-change-transform"
-                >
-                  volumes
-                </h2>
+              {/* Action Buttons */}
+              <div className="flex items-center gap-3 w-full sm:w-auto justify-center">
+                <Link href="/login" className="w-full sm:w-auto">
+                  <button
+                    type="button"
+                    className="w-full sm:w-auto px-7 py-3 rounded-full bg-white text-black font-bold text-sm hover:bg-neutral-200 transition-all shadow-xl hover:shadow-rose-500/20 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <span>Start My Page</span>
+                    <span className="text-neutral-500">→</span>
+                  </button>
+                </Link>
+                <Link href="/creators" className="w-full sm:w-auto">
+                  <button
+                    type="button"
+                    className="w-full sm:w-auto px-6 py-3 rounded-full bg-white/[0.08] hover:bg-white/[0.14] border border-white/15 text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95 backdrop-blur-md cursor-pointer"
+                  >
+                    Browse Creators
+                  </button>
+                </Link>
               </div>
 
               {/* Floating Interactive Creator Spotlight Card */}
@@ -551,9 +560,9 @@ export default function Home() {
                 style={{
                   transform: `translate3d(calc(var(--norm-x, 0) * -8px), calc(var(--norm-y, 0) * -6px), 15px)`
                 }}
-                className="patreon-glass p-3 sm:p-4 rounded-2xl flex items-center gap-3.5 max-w-xs sm:max-w-sm hover:border-rose-500/50 hover:scale-105 transition-all duration-300 shadow-2xl group cursor-pointer will-change-transform"
+                className="patreon-glass p-3 sm:p-3.5 rounded-2xl flex items-center gap-3 max-w-xs hover:border-rose-500/50 hover:scale-105 transition-all duration-300 shadow-2xl group cursor-pointer will-change-transform"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl overflow-hidden shrink-0 border border-white/20">
+                <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 border border-white/20">
                   <img
                     src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80"
                     alt="Creator"
@@ -561,7 +570,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="space-y-0.5">
-                  <p className="text-xs sm:text-sm font-semibold text-white leading-snug line-clamp-2">
+                  <p className="text-xs font-semibold text-white leading-snug line-clamp-2">
                     Empowering creators to build community & get funded directly with chai →
                   </p>
                 </div>
