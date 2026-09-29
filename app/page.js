@@ -6,7 +6,6 @@ export default function Home() {
   const [activeFaq, setActiveFaq] = useState(null)
   const [supporterCount, setSupporterCount] = useState(150)
   const [chaiPrice, setChaiPrice] = useState(20)
-  const [activeStep, setActiveStep] = useState(0)
   const [brewingChai, setBrewingChai] = useState(5)
   const [comparisonTab, setComparisonTab] = useState("getmeachai")
 
@@ -93,27 +92,6 @@ export default function Home() {
     { title: "Custom Creator URL", desc: "getmeachai.com/yourhandle", icon: "🔗" },
     { title: "Instant UPI & Card Checkout", desc: "Supporters back you in 5 seconds", icon: "💳" },
     { title: "Creator Studio Dashboard", desc: "Manage your keys & public page", icon: "📊" },
-  ];
-
-  const steps = [
-    {
-      num: "01",
-      title: "Create Your Account",
-      desc: "Sign in with GitHub in seconds, claim your custom username handle, and set up your public profile banner.",
-      icon: "⚡"
-    },
-    {
-      num: "02",
-      title: "Link Your Razorpay",
-      desc: "Add your Razorpay Key ID and Secret in your dashboard to receive 100% direct payouts straight to your bank.",
-      icon: "💳"
-    },
-    {
-      num: "03",
-      title: "Share & Get Funded",
-      desc: "Share your creator link across social bios, YouTube descriptions, or GitHub READMEs and receive chai with heartfelt notes.",
-      icon: "☕"
-    }
   ];
 
   const faqs = [
@@ -1095,45 +1073,6 @@ export default function Home() {
                 Personalize your public profile with custom banners, avatars, bios, and shareable short links for your audience.
               </p>
             </div>
-          </div>
-        </section>
-
-        {/* 8. Interactive Animated 3-Step Walkthrough with Step Highlights & 3D Tilt */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/[0.06]">
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-            <p className="text-xs uppercase font-bold tracking-widest text-orange-400">Simple & Transparent</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              How It Works in 3 Steps
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {steps.map((step, idx) => (
-              <div
-                key={idx}
-                onMouseEnter={() => setActiveStep(idx)}
-                onMouseMove={handleCardTilt}
-                onMouseLeave={handleCardTiltReset}
-                className={`patreon-glass card-3d-interactive rounded-3xl p-7 space-y-4 transition-all duration-300 cursor-pointer ${activeStep === idx
-                  ? "border-rose-500/60 shadow-2xl bg-white/[0.07]"
-                  : "border-white/10 hover:border-white/20"
-                  }`}
-              >
-                <div className="flex items-center justify-between card-3d-pop-deep">
-                  <span className={`step-badge-3d inline-flex w-11 h-11 rounded-2xl font-black text-sm items-center justify-center border transition-all ${activeStep === idx
-                    ? "bg-rose-500 text-white border-rose-400"
-                    : "bg-rose-500/15 text-rose-400 border-rose-500/30"
-                    }`}>
-                    {step.num}
-                  </span>
-                  <span className="text-2xl transform transition-transform group-hover:scale-110">{step.icon}</span>
-                </div>
-                <h3 className="card-3d-pop text-lg font-bold text-white">{step.title}</h3>
-                <p className="card-3d-pop text-xs sm:text-sm text-neutral-400 leading-relaxed">
-                  {step.desc}
-                </p>
-              </div>
-            ))}
           </div>
         </section>
 
