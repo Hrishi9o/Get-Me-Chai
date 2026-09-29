@@ -52,8 +52,8 @@ export const fetchuser = async (username) => {
 
 export const fetchpayment = async (username) => {
     await connectDB()
-    // Find all successful payments for this user, sorted by decreasing order of amount
-    let p = await Payment.find({ to_user: username, done: true }).sort({ amount: -1 }).lean()
+    // Find all successful payments for this user: highest amount first, then newest first for ties
+    let p = await Payment.find({ to_user: username, done: true }).sort({ amount: -1, createdAt: -1 }).lean()
     return JSON.parse(JSON.stringify(p))
 }
 
@@ -71,8 +71,13 @@ export const fetchUserStats = async (username) => {
     // Average contribution
     const avgDonation = totalPayments > 0 ? Math.round(totalEarnings / totalPayments) : 0
 
-    // Top supporter
-    const sortedByAmount = [...allPayments].sort((a, b) => b.amount - a.amount)
+    // Top supporter: highest amount first, then newest first for ties (identical to fetchpayment)
+    const sortedByAmount = [...allPayments].sort((a, b) => {
+        if (b.amount !== a.amount) {
+            return b.amount - a.amount
+        }
+        return new Date(b.createdAt) - new Date(a.createdAt)
+    })
     const topPayment = sortedByAmount.length > 0 ? sortedByAmount[0] : null
 
     return {
