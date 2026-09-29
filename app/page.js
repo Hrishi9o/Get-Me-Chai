@@ -1500,13 +1500,22 @@ export default function Home() {
             <p className="text-sm sm:text-base text-neutral-300 max-w-lg mx-auto">
               Join creators who turn their passion into a sustainable creative journey with direct community funding.
             </p>
-            <div className="pt-2">
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link href="/login">
                 <button
                   type="button"
-                  className="text-black bg-white hover:bg-neutral-200 font-bold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all shadow-xl hover:scale-105 active:scale-95 cursor-pointer"
+                  className="w-full sm:w-auto text-black bg-white hover:bg-neutral-200 font-bold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all shadow-xl hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   Create Your Page Today
+                </button>
+              </Link>
+              <Link href="/creators">
+                <button
+                  type="button"
+                  className="w-full sm:w-auto text-white bg-white/[0.08] hover:bg-white/[0.15] border border-white/15 font-bold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all shadow-xl hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <span>Explore Creators</span>
+                  <span>✨</span>
                 </button>
               </Link>
             </div>

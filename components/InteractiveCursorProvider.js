@@ -21,10 +21,12 @@ export default function InteractiveCursorProvider({ children }) {
         rafId = requestAnimationFrame(updateCursor);
       }
 
-      // Check if hovering over a 3D interactive target
-      const target = e.target.closest('[data-cursor-3d], .btn-3d-interactive, .card-3d-interactive');
-      if (target && !target.hasAttribute('data-no-tilt')) {
-        handleElementTilt(e, target);
+      // Only apply 3D tilt on desktop (mouse pointer), skip on mobile touch screens to prevent overflow
+      if (window.innerWidth >= 768 && !window.matchMedia('(pointer: coarse)').matches) {
+        const target = e.target.closest('[data-cursor-3d], .btn-3d-interactive, .card-3d-interactive');
+        if (target && !target.hasAttribute('data-no-tilt')) {
+          handleElementTilt(e, target);
+        }
       }
     };
 

@@ -16,12 +16,15 @@
   --glow-color: rgba(255, 66, 77, 0.25);
 }
 
+html,
 body {
   background-color: var(--bg-primary);
   color: var(--text-main);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Patreon Glassmorphism Containers */

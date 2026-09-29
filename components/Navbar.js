@@ -68,6 +68,16 @@ const Navbar = () => {
               Home
             </Link>
             <Link
+              href="/creators"
+              className={`px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-full transition-all ${
+                pathname === '/creators'
+                  ? 'text-white bg-white/[0.1] shadow-sm'
+                  : 'text-neutral-300 hover:text-white hover:bg-white/[0.06]'
+              }`}
+            >
+              Explore
+            </Link>
+            <Link
               href="/about"
               className={`px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-full transition-all ${
                 pathname === '/about'
@@ -312,6 +322,18 @@ const Navbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
             Home
+          </Link>
+
+          <Link
+            href="/creators"
+            className={`flex items-center gap-2.5 px-4 py-3 rounded-2xl text-sm font-semibold transition-all ${
+              pathname === '/creators'
+                ? 'text-white bg-white/[0.1]'
+                : 'text-neutral-300 hover:text-white hover:bg-white/[0.06]'
+            }`}
+          >
+            <span className="text-base">✨</span>
+            Explore Creators
           </Link>
 
           <Link

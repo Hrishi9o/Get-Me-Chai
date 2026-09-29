@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import { useSession } from "next-auth/react"
 import React, { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
-import { fetchuser, updateProfile } from '@/actions/useractions'
+import { fetchuser, updateProfile, fetchUserStats } from '@/actions/useractions'
 import { ToastContainer, toast, Bounce } from 'react-toastify'
 
 const Dashboard = () => {
@@ -11,14 +11,26 @@ const Dashboard = () => {
   const router = useRouter()
   const [form, setForm] = useState({})
   const [saving, setSaving] = useState(false)
-  const [activeTab, setActiveTab] = useState("profile")
+  const [activeTab, setActiveTab] = useState("overview")
+  const [stats, setStats] = useState({
+    totalEarnings: 0,
+    totalPayments: 0,
+    uniqueSupporters: 0,
+    avgDonation: 0,
+    topSupporter: null,
+    recentPayments: []
+  })
 
   const getData = useCallback(async () => {
     if (session?.user?.name) {
       let u = await fetchuser(session.user.name)
       if (u) setForm(u)
+
+      let s = await fetchUserStats(session.user.name)
+      if (s) setStats(s)
     }
   }, [session])
+
 
   useEffect(() => {
     if (!session) {
@@ -130,11 +142,22 @@ const Dashboard = () => {
       </div>
 
       {/* Interactive Tabs */}
-      <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] max-w-md">
+      <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] max-w-xl">
+        <button
+          type="button"
+          onClick={() => setActiveTab("overview")}
+          className={`flex-1 py-2 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+            activeTab === "overview"
+              ? "bg-rose-500 text-white shadow-md scale-[1.02]"
+              : "text-neutral-400 hover:text-white"
+          }`}
+        >
+          📊 Analytics & Payouts
+        </button>
         <button
           type="button"
           onClick={() => setActiveTab("profile")}
-          className={`flex-1 py-2 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+          className={`flex-1 py-2 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
             activeTab === "profile"
               ? "bg-rose-500 text-white shadow-md scale-[1.02]"
               : "text-neutral-400 hover:text-white"
@@ -145,7 +168,7 @@ const Dashboard = () => {
         <button
           type="button"
           onClick={() => setActiveTab("payout")}
-          className={`flex-1 py-2 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+          className={`flex-1 py-2 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
             activeTab === "payout"
               ? "bg-rose-500 text-white shadow-md scale-[1.02]"
               : "text-neutral-400 hover:text-white"
@@ -155,8 +178,184 @@ const Dashboard = () => {
         </button>
       </div>
 
+      {/* Tab 1: Analytics & Payouts */}
+      {activeTab === "overview" && (
+        <div className="space-y-6 animate-fadeIn">
+          {/* 4 Stat Cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div data-cursor-3d data-tilt-deg="6" className="card-3d-interactive patreon-glass rounded-3xl p-5 border border-white/[0.08] relative overflow-hidden">
+              <div className="flex items-center justify-between text-neutral-400">
+                <span className="text-xs font-bold uppercase tracking-wider">Total Raised</span>
+                <span className="text-lg">💰</span>
+              </div>
+              <p className="text-2xl sm:text-3xl font-black text-emerald-400 mt-2">
+                ₹{stats.totalEarnings}
+              </p>
+              <p className="text-[11px] text-neutral-500 mt-1">100% direct payouts</p>
+            </div>
+
+            <div data-cursor-3d data-tilt-deg="6" className="card-3d-interactive patreon-glass rounded-3xl p-5 border border-white/[0.08] relative overflow-hidden">
+              <div className="flex items-center justify-between text-neutral-400">
+                <span className="text-xs font-bold uppercase tracking-wider">Chais Received</span>
+                <span className="text-lg">☕</span>
+              </div>
+              <p className="text-2xl sm:text-3xl font-black text-rose-400 mt-2">
+                {stats.totalPayments}
+              </p>
+              <p className="text-[11px] text-neutral-500 mt-1">Total cups donated</p>
+            </div>
+
+            <div data-cursor-3d data-tilt-deg="6" className="card-3d-interactive patreon-glass rounded-3xl p-5 border border-white/[0.08] relative overflow-hidden">
+              <div className="flex items-center justify-between text-neutral-400">
+                <span className="text-xs font-bold uppercase tracking-wider">Supporters</span>
+                <span className="text-lg">👥</span>
+              </div>
+              <p className="text-2xl sm:text-3xl font-black text-amber-400 mt-2">
+                {stats.uniqueSupporters}
+              </p>
+              <p className="text-[11px] text-neutral-500 mt-1">Unique individuals</p>
+            </div>
+
+            <div data-cursor-3d data-tilt-deg="6" className="card-3d-interactive patreon-glass rounded-3xl p-5 border border-white/[0.08] relative overflow-hidden">
+              <div className="flex items-center justify-between text-neutral-400">
+                <span className="text-xs font-bold uppercase tracking-wider">Avg. Donation</span>
+                <span className="text-lg">📈</span>
+              </div>
+              <p className="text-2xl sm:text-3xl font-black text-sky-400 mt-2">
+                ₹{stats.avgDonation}
+              </p>
+              <p className="text-[11px] text-neutral-500 mt-1">Per contribution</p>
+            </div>
+          </div>
+
+          {/* Top Supporter Banner (if any) */}
+          {stats.topSupporter && (
+            <div data-cursor-3d data-tilt-deg="4" className="card-3d-interactive p-5 rounded-3xl bg-gradient-to-r from-amber-500/15 via-[#1a1714] to-neutral-900 border border-amber-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-400 to-yellow-500 flex items-center justify-center text-2xl shadow-lg shadow-amber-500/20">
+                  👑
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-black text-amber-400 uppercase tracking-widest">Hall of Fame</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 font-bold border border-amber-400/30">#1 Top Supporter</span>
+                  </div>
+                  <h3 className="text-lg font-black text-white">{stats.topSupporter.name}</h3>
+                </div>
+              </div>
+              <div className="text-left sm:text-right">
+                <p className="text-xs text-neutral-400">Highest contribution</p>
+                <p className="text-xl font-black text-emerald-400">₹{stats.topSupporter.amount}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Recent Payments Table / Feed */}
+          <div className="patreon-glass rounded-3xl p-4 sm:p-7 space-y-4 shadow-xl overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.06] pb-4">
+              <div className="space-y-0.5">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h2 className="text-base sm:text-lg font-bold text-white flex items-center gap-1.5">
+                    <span>📜</span>
+                    <span>Payment History</span>
+                  </h2>
+                  <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-300 font-bold border border-rose-500/20 whitespace-nowrap">
+                    {stats.recentPayments.length} transactions
+                  </span>
+                </div>
+                <p className="text-xs text-neutral-400">
+                  Real-time log of supporters who sent chai to your linked Razorpay account.
+                </p>
+              </div>
+            </div>
+
+            {stats.recentPayments.length === 0 ? (
+              <div className="text-center py-12 space-y-3">
+                <div className="w-16 h-16 mx-auto rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-2xl">
+                  ☕
+                </div>
+                <p className="text-base font-bold text-white">No payments received yet</p>
+                <p className="text-xs text-neutral-400 max-w-sm mx-auto leading-relaxed">
+                  Share your public page link with your audience on Twitter, YouTube, or Instagram to start receiving chai!
+                </p>
+              </div>
+            ) : (
+              <>
+                {/* Mobile View: Clean Card-based Feed */}
+                <div className="block md:hidden space-y-2.5 max-h-[500px] overflow-y-auto pr-1">
+                  {stats.recentPayments.map((p, idx) => (
+                    <div key={idx} className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] space-y-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <span className="w-8 h-8 rounded-full bg-gradient-to-tr from-rose-500/30 to-amber-500/30 text-rose-300 flex items-center justify-center text-xs font-bold shrink-0 border border-white/10">
+                            {(p.name || "A")[0].toUpperCase()}
+                          </span>
+                          <div className="min-w-0">
+                            <p className="text-xs sm:text-sm font-bold text-white truncate max-w-[140px] xs:max-w-[180px]">
+                              {p.name || "Anonymous"}
+                            </p>
+                            <p className="text-[10px] text-neutral-400">
+                              {new Date(p.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                            </p>
+                          </div>
+                        </div>
+                        <span className="text-xs font-black px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+                          +₹{p.amount / 100}
+                        </span>
+                      </div>
+                      {p.message && (
+                        <div className="pt-2 border-t border-white/[0.04]">
+                          <p className="text-xs text-neutral-300 italic leading-relaxed break-words">
+                            &ldquo;{p.message}&rdquo;
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Desktop View: Formatted Structured Table */}
+                <div className="hidden md:block overflow-x-auto max-h-[480px] overflow-y-auto pr-1">
+                  <table className="w-full text-left text-sm">
+                    <thead>
+                      <tr className="border-b border-white/[0.06] text-neutral-400 font-bold text-[11px] uppercase tracking-wider">
+                        <th className="pb-3 pl-3">Supporter</th>
+                        <th className="pb-3">Amount</th>
+                        <th className="pb-3">Date</th>
+                        <th className="pb-3 pr-3">Message</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-white/[0.04]">
+                      {stats.recentPayments.map((p, idx) => (
+                        <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
+                          <td className="py-3.5 pl-3 font-bold text-white flex items-center gap-2.5">
+                            <span className="w-8 h-8 rounded-full bg-rose-500/20 text-rose-300 flex items-center justify-center text-xs font-bold shrink-0">
+                              {(p.name || "A")[0].toUpperCase()}
+                            </span>
+                            <span className="truncate max-w-[180px]">{p.name || "Anonymous"}</span>
+                          </td>
+                          <td className="py-3.5 font-black text-emerald-400 whitespace-nowrap">
+                            ₹{p.amount / 100}
+                          </td>
+                          <td className="py-3.5 text-neutral-400 text-xs whitespace-nowrap">
+                            {new Date(p.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                          </td>
+                          <td className="py-3.5 pr-3 text-neutral-300 italic text-xs max-w-sm truncate">
+                            {p.message ? `"${p.message}"` : <span className="text-neutral-500 not-italic">—</span>}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Main Settings Form */}
-      <form action={handleSubmit} className="space-y-8">
+      <form action={handleSubmit} className={`space-y-8 ${activeTab === "overview" ? "hidden" : ""}`}>
         
         {/* Section 1: Profile Information */}
         <div className={`patreon-glass rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl transition-all duration-300 ${activeTab !== "profile" ? "hidden" : "animate-fadeIn"}`}>
