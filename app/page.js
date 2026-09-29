@@ -1184,35 +1184,35 @@ export default function Home() {
           {/* Cinematic Video Player Frame (Rock-solid, steady frame) */}
           <div
             data-no-tilt="true"
-            className="w-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/15 bg-gradient-to-b from-[#16161e] via-[#0d0d12] to-[#08080c] relative text-left flex flex-col transition-all duration-300"
+            className="w-full max-w-4xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/15 bg-gradient-to-b from-[#16161e] via-[#0d0d12] to-[#08080c] relative text-left flex flex-col transition-all duration-300"
           >
 
             {/* Dynamic Ambient Background Glow */}
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 blur-[110px] rounded-full pointer-events-none transition-all duration-700"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-96 h-64 sm:h-96 blur-[90px] sm:blur-[110px] rounded-full pointer-events-none transition-all duration-700"
               style={{ backgroundColor: videoScenes[activeVideoScene].glowColor }}
             />
 
             {/* Browser / Video Player Header */}
-            <div className="px-5 py-3 bg-black/70 backdrop-blur-xl border-b border-white/10 flex items-center justify-between z-10">
-              <div className="flex items-center gap-3">
+            <div className="px-3.5 sm:px-5 py-2.5 sm:py-3 bg-black/70 backdrop-blur-xl border-b border-white/10 flex items-center justify-between z-10 gap-2">
+              <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                 {/* Traffic Light Buttons */}
-                <div className="flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-[#ff5f56] border border-black/20" />
-                  <span className="w-3 h-3 rounded-full bg-[#ffbd2e] border border-black/20" />
-                  <span className="w-3 h-3 rounded-full bg-[#27c93f] border border-black/20" />
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56] border border-black/20" />
+                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e] border border-black/20" />
+                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27c93f] border border-black/20" />
                 </div>
 
                 {/* Title & Live Badge */}
-                <div className="flex items-center gap-2 ml-1">
-                  <span className="text-xs font-bold text-white">GetMeAChai App Tour</span>
+                <div className="flex items-center gap-1.5 sm:gap-2 ml-1 min-w-0">
+                  <span className="text-[11px] sm:text-xs font-bold text-white whitespace-nowrap">GetMeAChai Tour</span>
                   <span className="text-[10px] text-neutral-400 hidden sm:inline">•</span>
-                  <span className="text-[11px] text-neutral-400 hidden sm:inline">{videoScenes[activeVideoScene].title}</span>
+                  <span className="text-[10px] sm:text-[11px] text-neutral-400 truncate max-w-[130px] sm:max-w-none">{videoScenes[activeVideoScene].title}</span>
                 </div>
               </div>
 
               {/* Right Badges & Audio Waveform Visualizer */}
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
                 {/* Animated Waveform Equalizer */}
                 <div className="hidden sm:flex items-center gap-0.5 h-3">
                   <span className={`w-0.5 bg-rose-400 rounded-full transition-all duration-200 ${videoPlaying ? 'h-3 animate-pulse' : 'h-1'}`} />
@@ -1221,56 +1221,56 @@ export default function Home() {
                   <span className={`w-0.5 bg-rose-400 rounded-full transition-all duration-200 ${videoPlaying ? 'h-1.5 animate-ping' : 'h-1'}`} />
                 </div>
 
-                <span className="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                <span className="text-[9px] sm:text-[10px] font-extrabold uppercase px-2 sm:px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 whitespace-nowrap">
                   {videoScenes[activeVideoScene].badge}
                 </span>
-                <span className="text-[10px] font-bold text-neutral-400 bg-white/5 px-2 py-0.5 rounded-md border border-white/10 hidden sm:inline">
+                <span className="text-[9px] sm:text-[10px] font-bold text-neutral-400 bg-white/5 px-1.5 sm:px-2 py-0.5 rounded-md border border-white/10 hidden sm:inline">
                   HD 60FPS
                 </span>
               </div>
             </div>
 
             {/* Video Stage Screen Content Area */}
-            <div className="relative min-h-[320px] sm:min-h-[380px] p-6 sm:p-10 flex items-center justify-center overflow-hidden z-10">
+            <div className="relative min-h-[300px] sm:min-h-[360px] p-3.5 sm:p-6 md:p-8 flex items-center justify-center overflow-hidden z-10">
 
               {/* SCENE 0: Creator Page & Key Setup */}
               {activeVideoScene === 0 && (
-                <div className="w-full max-w-lg space-y-4 animate-fadeIn">
-                  <div className="p-6 rounded-2xl bg-neutral-900/90 border border-white/15 shadow-2xl space-y-4 backdrop-blur-xl">
+                <div className="w-full max-w-lg space-y-3 sm:space-y-4 animate-fadeIn">
+                  <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-neutral-900/90 border border-white/15 shadow-2xl space-y-3 sm:space-y-4 backdrop-blur-xl">
                     <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-500 to-orange-400 flex items-center justify-center font-black text-white text-lg shadow-lg">
+                      <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-rose-500 to-orange-400 flex items-center justify-center font-black text-white text-base sm:text-lg shadow-lg shrink-0">
                           ☕
                         </div>
-                        <div>
-                          <h4 className="text-sm font-extrabold text-white flex items-center gap-1.5">
-                            <span>getmeachai.com/developer_chai</span>
-                            <span className="text-emerald-400 text-xs">✓</span>
+                        <div className="min-w-0">
+                          <h4 className="text-xs sm:text-sm font-extrabold text-white flex items-center gap-1.5 truncate">
+                            <span className="truncate">getmeachai.com/developer_chai</span>
+                            <span className="text-emerald-400 text-xs shrink-0">✓</span>
                           </h4>
-                          <p className="text-xs text-neutral-400">Open Source Builder & Tech Content Creator</p>
+                          <p className="text-[10px] sm:text-xs text-neutral-400 truncate">Open Source Builder & Content Creator</p>
                         </div>
                       </div>
                     </div>
 
-                    <div className="p-3.5 rounded-xl bg-black/50 border border-white/10 space-y-2">
-                      <div className="flex items-center justify-between text-xs">
+                    <div className="p-3 sm:p-3.5 rounded-xl bg-black/50 border border-white/10 space-y-2">
+                      <div className="flex items-center justify-between text-[11px] sm:text-xs">
                         <span className="text-neutral-400">Razorpay API Status:</span>
-                        <span className="font-bold text-emerald-400 flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                          <span>Connected (100% Direct Payouts)</span>
+                        <span className="font-bold text-emerald-400 flex items-center gap-1.5 whitespace-nowrap">
+                          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-ping" />
+                          <span>Connected (Direct Payouts)</span>
                         </span>
                       </div>
-                      <div className="flex items-center justify-between text-xs">
+                      <div className="flex items-center justify-between text-[11px] sm:text-xs">
                         <span className="text-neutral-400">Platform Commission:</span>
                         <span className="font-bold text-emerald-400">0.00% Always</span>
                       </div>
                     </div>
 
-                    <div className="flex gap-2 text-xs">
-                      <span className="px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/25">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[10px] sm:text-xs">
+                      <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/25">
                         ✓ Instant UPI Ready
                       </span>
-                      <span className="px-3 py-1.5 rounded-xl bg-white/5 text-neutral-300 font-semibold border border-white/10">
+                      <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl bg-white/5 text-neutral-300 font-semibold border border-white/10">
                         ⚡ 0-Day Holding Period
                       </span>
                     </div>
@@ -1280,33 +1280,33 @@ export default function Home() {
 
               {/* SCENE 1: Supporter Chai Selection & Checkout */}
               {activeVideoScene === 1 && (
-                <div className="w-full max-w-lg space-y-4 animate-fadeIn">
-                  <div className="p-6 rounded-2xl bg-neutral-900/90 border border-white/15 shadow-2xl space-y-4 backdrop-blur-xl">
-                    <div className="flex justify-between items-center text-xs font-bold border-b border-white/10 pb-3">
+                <div className="w-full max-w-lg space-y-3 sm:space-y-4 animate-fadeIn">
+                  <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-neutral-900/90 border border-white/15 shadow-2xl space-y-3 sm:space-y-4 backdrop-blur-xl">
+                    <div className="flex flex-wrap gap-1 justify-between items-center text-[11px] sm:text-xs font-bold border-b border-white/10 pb-3">
                       <span className="text-neutral-300">Choose Chai for @developer_chai:</span>
-                      <span className="text-rose-400 font-black text-sm bg-rose-500/10 px-2.5 py-1 rounded-lg border border-rose-500/20">
+                      <span className="text-rose-400 font-black text-xs sm:text-sm bg-rose-500/10 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg border border-rose-500/20">
                         ₹50 (5 Chai)
                       </span>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-2">
-                      <div className="py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-center text-xs font-bold text-neutral-400">
+                    <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+                      <div className="py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-white/[0.04] border border-white/10 text-center text-[11px] sm:text-xs font-bold text-neutral-400">
                         ☕ 1 (₹10)
                       </div>
-                      <div className="py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-center text-xs font-bold text-neutral-400">
+                      <div className="py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-white/[0.04] border border-white/10 text-center text-[11px] sm:text-xs font-bold text-neutral-400">
                         ☕ 2 (₹20)
                       </div>
-                      <div className="py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-orange-500 border border-rose-400 text-center text-xs font-black text-white shadow-lg shadow-rose-500/30 scale-105 animate-cup-bounce">
+                      <div className="py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-gradient-to-r from-rose-500 to-orange-500 border border-rose-400 text-center text-[11px] sm:text-xs font-black text-white shadow-lg shadow-rose-500/30 scale-105 animate-cup-bounce">
                         ☕ 5 (₹50) ★
                       </div>
                     </div>
 
-                    <div className="p-3.5 rounded-xl bg-black/50 border border-white/10 text-xs text-neutral-300 italic flex items-center gap-2">
-                      <span className="text-base">💬</span>
-                      <span>&ldquo;Your open source tutorials helped me crack my interview! Have a chai! 🚀&rdquo;</span>
+                    <div className="p-2.5 sm:p-3.5 rounded-xl bg-black/50 border border-white/10 text-[11px] sm:text-xs text-neutral-300 italic flex items-center gap-2">
+                      <span className="text-sm sm:text-base shrink-0">💬</span>
+                      <span className="line-clamp-2 sm:line-clamp-none">&ldquo;Your open source tutorials helped me crack my interview! Have a chai! 🚀&rdquo;</span>
                     </div>
 
-                    <div className="py-3 px-4 rounded-xl bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-xl animate-pulse">
+                    <div className="py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 text-white font-extrabold text-[11px] sm:text-xs flex items-center justify-center gap-2 shadow-xl animate-pulse">
                       <span>⚡ Instant UPI / Card Checkout</span>
                       <span>→</span>
                     </div>
@@ -1316,29 +1316,29 @@ export default function Home() {
 
               {/* SCENE 2: Direct Razorpay Settlement */}
               {activeVideoScene === 2 && (
-                <div className="w-full max-w-lg space-y-4 animate-fadeIn">
-                  <div className="p-6 rounded-2xl bg-gradient-to-b from-emerald-950/60 to-neutral-900 border border-emerald-500/35 shadow-2xl space-y-4 text-center backdrop-blur-xl">
-                    <div className="w-14 h-14 mx-auto rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-2xl shadow-lg shadow-emerald-500/20 animate-bounce">
+                <div className="w-full max-w-lg space-y-3 sm:space-y-4 animate-fadeIn">
+                  <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-b from-emerald-950/60 to-neutral-900 border border-emerald-500/35 shadow-2xl space-y-3 sm:space-y-4 text-center backdrop-blur-xl">
+                    <div className="w-11 h-11 sm:w-14 sm:h-14 mx-auto rounded-xl sm:rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xl sm:text-2xl shadow-lg shadow-emerald-500/20 animate-bounce">
                       ✅
                     </div>
                     <div>
-                      <h4 className="text-base sm:text-lg font-black text-white">Payment Received Directly!</h4>
-                      <p className="text-xs text-emerald-400 font-bold mt-0.5">₹50.00 Transferred to Creator Bank Account</p>
+                      <h4 className="text-sm sm:text-lg font-black text-white">Payment Received Directly!</h4>
+                      <p className="text-[11px] sm:text-xs text-emerald-400 font-bold mt-0.5">₹50.00 Transferred to Creator Bank Account</p>
                     </div>
 
-                    <div className="p-4 rounded-xl bg-black/60 border border-white/10 grid grid-cols-2 gap-3 text-xs">
+                    <div className="p-3 sm:p-4 rounded-xl bg-black/60 border border-white/10 grid grid-cols-2 gap-2 sm:gap-3 text-[11px] sm:text-xs">
                       <div className="text-left">
-                        <p className="text-neutral-500 text-[10px] uppercase font-bold">Platform Fee (0%)</p>
-                        <p className="font-black text-emerald-400 text-sm">₹0.00 Deducted</p>
+                        <p className="text-neutral-500 text-[9px] sm:text-[10px] uppercase font-bold">Platform Fee (0%)</p>
+                        <p className="font-black text-emerald-400 text-xs sm:text-sm">₹0.00 Deducted</p>
                       </div>
-                      <div className="text-left border-l border-white/10 pl-3">
-                        <p className="text-neutral-500 text-[10px] uppercase font-bold">Bank Payout</p>
-                        <p className="font-black text-white text-sm">100% Retained</p>
+                      <div className="text-left border-l border-white/10 pl-2 sm:pl-3">
+                        <p className="text-neutral-500 text-[9px] sm:text-[10px] uppercase font-bold">Bank Payout</p>
+                        <p className="font-black text-white text-xs sm:text-sm">100% Retained</p>
                       </div>
                     </div>
 
-                    <div className="inline-flex items-center gap-2 text-[11px] font-bold text-emerald-300 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20">
-                      <span>⚡ Razorpay Settlement ID: pay_OK98234</span>
+                    <div className="inline-flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] font-bold text-emerald-300 bg-emerald-500/10 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-emerald-500/20 max-w-full">
+                      <span className="truncate">⚡ Razorpay Settlement ID: pay_OK98234</span>
                     </div>
                   </div>
                 </div>
@@ -1346,38 +1346,38 @@ export default function Home() {
 
               {/* SCENE 3: Live Supporter Recognition Wall */}
               {activeVideoScene === 3 && (
-                <div className="w-full max-w-lg space-y-4 animate-fadeIn">
-                  <div className="p-6 rounded-2xl bg-neutral-900/90 border border-white/15 shadow-2xl space-y-3.5 backdrop-blur-xl">
-                    <div className="flex items-center justify-between text-xs border-b border-white/10 pb-2.5">
-                      <span className="font-extrabold text-white flex items-center gap-2">
-                        <span className="text-amber-400 text-base">🏆</span>
-                        <span>Live Public Supporter Leaderboard</span>
+                <div className="w-full max-w-lg space-y-3 sm:space-y-4 animate-fadeIn">
+                  <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-neutral-900/90 border border-white/15 shadow-2xl space-y-3 sm:space-y-3.5 backdrop-blur-xl">
+                    <div className="flex items-center justify-between text-[11px] sm:text-xs border-b border-white/10 pb-2.5 gap-2">
+                      <span className="font-extrabold text-white flex items-center gap-1.5 truncate">
+                        <span className="text-amber-400 text-sm sm:text-base shrink-0">🏆</span>
+                        <span className="truncate">Live Supporter Wall</span>
                       </span>
-                      <span className="text-emerald-400 font-extrabold text-[10px] bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20 animate-pulse">
-                        ● LIVE RECOGNITION
+                      <span className="text-emerald-400 font-extrabold text-[9px] sm:text-[10px] bg-emerald-500/10 px-1.5 sm:px-2 py-0.5 rounded-md border border-emerald-500/20 animate-pulse whitespace-nowrap shrink-0">
+                        ● LIVE
                       </span>
                     </div>
 
-                    <div className="p-3.5 rounded-xl bg-gradient-to-r from-rose-500/15 via-white/[0.04] to-transparent border border-rose-500/30 flex items-center justify-between shadow-lg">
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-500 to-amber-400 text-white font-black flex items-center justify-center text-xs shadow-md">
+                    <div className="p-2.5 sm:p-3.5 rounded-xl bg-gradient-to-r from-rose-500/15 via-white/[0.04] to-transparent border border-rose-500/30 flex items-center justify-between shadow-lg gap-2">
+                      <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-tr from-rose-500 to-amber-400 text-white font-black flex items-center justify-center text-xs shadow-md shrink-0">
                           A
                         </div>
-                        <div className="text-left">
-                          <p className="text-xs font-bold text-white flex items-center gap-1.5">
-                            <span>Alex_Dev</span>
-                            <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-400/20 text-amber-300 font-bold">Top Backer</span>
+                        <div className="text-left min-w-0">
+                          <p className="text-[11px] sm:text-xs font-bold text-white flex items-center gap-1 truncate">
+                            <span className="truncate">Alex_Dev</span>
+                            <span className="text-[9px] px-1 py-0.2 rounded bg-amber-400/20 text-amber-300 font-bold shrink-0">Backer</span>
                           </p>
-                          <p className="text-[11px] text-neutral-300 italic">&ldquo;Your tutorials helped me crack my interview!&rdquo;</p>
+                          <p className="text-[10px] sm:text-[11px] text-neutral-300 italic truncate">&ldquo;Helped me crack my interview!&rdquo;</p>
                         </div>
                       </div>
-                      <span className="text-xs font-black text-rose-400 bg-rose-500/10 px-2.5 py-1 rounded-lg border border-rose-500/20">
+                      <span className="text-[11px] sm:text-xs font-black text-rose-400 bg-rose-500/10 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg border border-rose-500/20 shrink-0">
                         ₹50
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between text-[11px] text-neutral-400 px-1">
-                      <span>⚡ Note visible on creator&apos;s public wall</span>
+                    <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-neutral-400 px-1">
+                      <span>⚡ Note on creator&apos;s wall</span>
                       <span className="text-neutral-500 font-semibold">Just now</span>
                     </div>
                   </div>
@@ -1387,7 +1387,7 @@ export default function Home() {
             </div>
 
             {/* Video Player Controls Bottom Bar */}
-            <div className="p-4 sm:p-5 bg-black/85 backdrop-blur-2xl border-t border-white/10 space-y-3 z-10">
+            <div className="p-3 sm:p-5 bg-black/85 backdrop-blur-2xl border-t border-white/10 space-y-2.5 sm:space-y-3 z-10">
 
               {/* Timeline Progress Bar (Interactive scrubber) */}
               <div
@@ -1399,7 +1399,7 @@ export default function Home() {
                   const sceneIndex = Math.min(Math.floor((newPct / 100) * videoScenes.length), videoScenes.length - 1);
                   setActiveVideoScene(sceneIndex);
                 }}
-                className="relative w-full h-2.5 bg-neutral-800/90 rounded-full overflow-hidden cursor-pointer group"
+                className="relative w-full h-2 sm:h-2.5 bg-neutral-800/90 rounded-full overflow-hidden cursor-pointer group"
               >
                 <div
                   className="h-full bg-gradient-to-r from-rose-500 via-orange-500 to-amber-400 rounded-full transition-all duration-150 relative"
@@ -1410,66 +1410,70 @@ export default function Home() {
               </div>
 
               {/* Bottom Controls & Chapter Navigation */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3 pt-1">
 
-                {/* Play / Pause & Time */}
-                <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-start">
-                  <button
-                    type="button"
-                    onClick={() => setVideoPlaying(!videoPlaying)}
-                    className="w-9 h-9 rounded-full bg-white text-black hover:bg-neutral-200 flex items-center justify-center text-xs font-bold shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
-                    title={videoPlaying ? "Pause Walkthrough" : "Play Walkthrough"}
-                  >
-                    {videoPlaying ? "⏸" : "▶"}
-                  </button>
+                {/* Play / Pause, Time & Speed Controls */}
+                <div className="flex items-center justify-between sm:justify-start gap-2 sm:gap-3 w-full sm:w-auto">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setVideoPlaying(!videoPlaying)}
+                      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-black hover:bg-neutral-200 flex items-center justify-center text-xs font-bold shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer shrink-0"
+                      title={videoPlaying ? "Pause Walkthrough" : "Play Walkthrough"}
+                    >
+                      {videoPlaying ? "⏸" : "▶"}
+                    </button>
 
-                  <div className="flex flex-col text-left">
-                    <span className="text-xs font-bold text-white">
-                      {videoPlaying ? "Tour Playing" : "Tour Paused"}
-                    </span>
-                    <span className="text-[10px] text-neutral-400">
-                      Scene {activeVideoScene + 1} of 4
-                    </span>
+                    <div className="flex flex-col text-left">
+                      <span className="text-[11px] sm:text-xs font-bold text-white whitespace-nowrap">
+                        {videoPlaying ? "Tour Playing" : "Tour Paused"}
+                      </span>
+                      <span className="text-[9px] sm:text-[10px] text-neutral-400 whitespace-nowrap">
+                        Scene {activeVideoScene + 1} of 4
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Speed Toggle */}
-                  <div className="flex items-center gap-1 bg-white/5 p-1 rounded-lg border border-white/10 ml-2">
-                    {[1, 1.5, 2].map((spd) => (
-                      <button
-                        key={spd}
-                        type="button"
-                        onClick={() => setPlaybackSpeed(spd)}
-                        className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all cursor-pointer ${playbackSpeed === spd
-                          ? "bg-rose-500 text-white"
-                          : "text-neutral-400 hover:text-white"
-                          }`}
-                      >
-                        {spd}x
-                      </button>
-                    ))}
-                  </div>
+                  <div className="flex items-center gap-1.5">
+                    {/* Speed Toggle */}
+                    <div className="flex items-center gap-0.5 sm:gap-1 bg-white/5 p-0.5 sm:p-1 rounded-lg border border-white/10">
+                      {[1, 1.5, 2].map((spd) => (
+                        <button
+                          key={spd}
+                          type="button"
+                          onClick={() => setPlaybackSpeed(spd)}
+                          className={`px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-bold transition-all cursor-pointer ${playbackSpeed === spd
+                            ? "bg-rose-500 text-white"
+                            : "text-neutral-400 hover:text-white"
+                            }`}
+                        >
+                          {spd}x
+                        </button>
+                      ))}
+                    </div>
 
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setVideoProgress(0);
-                      setActiveVideoScene(0);
-                      setVideoPlaying(true);
-                    }}
-                    className="text-xs text-neutral-400 hover:text-white px-2 py-1 rounded hover:bg-white/10 transition-colors cursor-pointer"
-                  >
-                    ↺ Replay
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setVideoProgress(0);
+                        setActiveVideoScene(0);
+                        setVideoPlaying(true);
+                      }}
+                      className="text-[11px] sm:text-xs text-neutral-400 hover:text-white px-1.5 sm:px-2 py-1 rounded hover:bg-white/10 transition-colors cursor-pointer whitespace-nowrap"
+                    >
+                      ↺ Replay
+                    </button>
+                  </div>
                 </div>
 
                 {/* Chapter Pill Buttons */}
-                <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 sm:pb-0">
+                <div className="flex items-center gap-1 sm:gap-1.5 overflow-x-auto max-w-full pb-1 sm:pb-0 scrollbar-none">
                   {videoScenes.map((scene) => (
                     <button
                       key={scene.id}
                       type="button"
                       onClick={() => handleSelectScene(scene.id)}
-                      className={`px-3 py-1.5 rounded-full text-[11px] font-bold transition-all whitespace-nowrap cursor-pointer ${activeVideoScene === scene.id
+                      className={`px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-[11px] font-bold transition-all whitespace-nowrap cursor-pointer shrink-0 ${activeVideoScene === scene.id
                         ? "bg-rose-500 text-white shadow-md shadow-rose-500/30 scale-105"
                         : "bg-white/[0.04] text-neutral-400 hover:text-white hover:bg-white/[0.08]"
                         }`}

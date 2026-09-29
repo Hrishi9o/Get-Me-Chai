@@ -1,9 +1,8 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
-// import GoogleProvider from "next-auth/providers/google"
-// import FacebookProvider from "next-auth/providers/facebook"
-// import AppleProvider from "next-auth/providers/apple"
-// import EmailProvider from "next-auth/providers/email"
+import GoogleProvider from "next-auth/providers/google"
+import LinkedInProvider from "next-auth/providers/linkedin"
+import FacebookProvider from "next-auth/providers/facebook"
 import mongoose from "mongoose"
 import User from "@/models/User"
 import Payment from "@/models/Payment"
@@ -15,36 +14,55 @@ export const authOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
-    })
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_CLIENT_ID,
-    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    // }),
-    // FacebookProvider({
-    //   clientId: process.env.FACEBOOK_CLIENT_ID,
-    //   clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    // }),
-    // AppleProvider({
-    //   clientId: process.env.APPLE_ID,
-    //   clientSecret: process.env.APPLE_SECRET,
-    // }),
-    // EmailProvider({
-    //   server: process.env.EMAIL_SERVER,
-    //   from: process.env.EMAIL_FROM,
-    // }),
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    LinkedInProvider({
+      clientId: process.env.LINKEDIN_CLIENT_ID,
+      clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
+      client: {
+        token_endpoint_auth_method: "client_secret_post",
+      },
+      issuer: "https://www.linkedin.com",
+      wellKnown: "https://www.linkedin.com/oauth/.well-known/openid-configuration",
+      authorization: {
+        params: {
+          scope: "openid profile email",
+        },
+      },
+      profile(profile) {
+        return {
+          id: profile.sub,
+          name: profile.name,
+          email: profile.email,
+          image: profile.picture,
+        }
+      },
+    }),
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    }),
   ],
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      //Runs on login
-      if (account.provider == "github") {
-        //connect to database
+      // Runs on login for every available option
+      if (
+        account.provider == "github" ||
+        account.provider == "google" ||
+        account.provider == "linkedin" ||
+        account.provider == "facebook"
+      ) {
+        // connect to database
         await connectDB()
-        //check if user already exists in the database
+        // check if user already exists in the database
         const currentUser = await User.findOne({ email: user.email })
         if (!currentUser) {
           const newuser = new User({
             email: user.email,
-            username: user.email.split("@")[0],
+            username: user.email ? user.email.split("@")[0] : user.name,
           })
           await newuser.save()
         }
