@@ -358,22 +358,22 @@ export default function Home() {
       <div className="relative z-10">
 
         {/* 1. Modern Creator Showcase Hero with Silk GPU 3D Parallax */}
-        <section className="perspective-hero relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-between overflow-hidden bg-neutral-950/95 border-b border-white/[0.08] preserve-3d">
+        <section className="perspective-hero relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-between overflow-hidden bg-neutral-950/80 border-b border-white/[0.08] preserve-3d">
 
-          {/* Dark Atmospheric Ambient Creator Background (Replaced cinema clapperboard) */}
+          {/* Full-bleed Immersive Creator Visual Background with Subtle Parallax */}
           <div
             className="absolute inset-0 z-0 overflow-hidden will-change-transform"
             style={{
-              transform: `scale(1.04) translate3d(calc(var(--norm-x, 0) * -8px), calc(var(--norm-y, 0) * -6px), 0)`
+              transform: `scale(1.06) translate3d(calc(var(--norm-x, 0) * -10px), calc(var(--norm-y, 0) * -8px), 0)`
             }}
           >
             <img
-              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=2000&q=80"
-              alt="Creative Space"
-              className="w-full h-full object-cover object-center opacity-20 filter brightness-[0.55] contrast-[1.15]"
+              src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=2000&q=80"
+              alt="Creator Scene"
+              className="w-full h-full object-cover object-center opacity-70 filter brightness-[0.75] contrast-[1.08] animate-hero-kenburns"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0f] via-[#0c0c0f]/85 to-[#0c0c0f]/90" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/12 via-rose-500/8 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0f] via-black/20 to-black/50" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
           </div>
 
           {/* Dynamic GPU Hero Glow */}
